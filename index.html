@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Engagement Invitation | Saumya & Abhishek</title>
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display&family=Montserrat&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- START SCREEN -->
+<div id="presentation-start" style="position: fixed; inset: 0; background: rgba(5,24,28,0.95); z-index: 9999; display: flex; align-items: center; justify-content: center; flex-direction: column; cursor: pointer; color: #D4AF37; text-align: center;">
+    <h1 style="font-family: 'Great Vibes'; font-size: 4rem;">Welcome</h1>
+    <p style="font-family: 'Playfair Display';">Click anywhere to start</p>
+</div>
+
+<!-- AUDIO -->
+<audio id="audio-hero" src="assets/music/bhajan.mp3" loop></audio>
+<audio id="audio-welcome" src="assets/music/tum.mp3" loop></audio>
+<audio id="audio-invitation" src="assets/music/do.mp3" loop></audio>
+<audio id="audio-location" src="assets/music/do.mp3" loop></audio>
+
+<!-- BACKGROUND FRAME -->
+<div class="frame-overlay"></div>
+
+<!-- PARTICLES -->
+<div id="particles-container"></div>
+
+<!-- MAIN CONTENT -->
+<div class="content-wrapper">
+
+    <!-- HERO -->
+    <div class="content-wrapper">
+
+    <!-- HERO -->
+    <section id="hero" class="section bg-hero">
+        <div class="hero-container">
+            <div class="rotating-frame">
+                <img src="assets/circle1.png" class="frame-img">
+                <img src="assets/ganeshji1.png" class="ganesh-img">
+            </div>
+
+            <p class="ganesh-mantra">
+                वक्रतुण्ड महाकाय सूर्यकोटि समप्रभ। <br>
+                निर्विघ्नं कुरु मे देव सर्वकार्येषु सर्वदा॥
+            </p>
+        </div>
+    </section>
+
+    <!-- WELCOME -->
+     <section id="welcome" class="section bg-welcome">
+            <div class="floating-objects"></div>
+            <img src="assets/couple.png" class="welcome-image">
+            
+            <div >
+                 
+                <h3 class="subtitle">Together with their families</h3>
+                <h1 class="couple-names" contenteditable="true">Saumya & Abhishek</h1>
+                <p class="invite-text">Invite you to celebrate their engagement ceremony</p>
+                <div class="scroll-indicator">
+                   
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+            </div>
+            
+        </section>
+
+    <!-- INVITATION -->
+    <section id="invitation" class="section bg-invitation">
+        <div class="glass-card slide-up">
+            <h2 class="section-title">The Details</h2>
+
+            <div class="details-grid">
+                <div class="detail-item">
+                    <h3>Date</h3>
+                    <p>Thursday, April 16th, 2026</p>
+                </div>
+
+                <div class="detail-item">
+                    <h3>Time</h3>
+                    <p>12:30 PM Onwards</p>
+                </div>
+
+                <div class="detail-item">
+                    <h3>Venue</h3>
+                    <p>Vaibhav Lawn, Gopiganj</p>
+                </div>
+            </div>
+
+            <!-- COUNTDOWN -->
+            <div class="countdown-timer">
+                <span id="days">00</span> :
+                <span id="hours">00</span> :
+                <span id="minutes">00</span> :
+                <span id="seconds">00</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- LOCATION -->
+    <section id="location" class="section bg-location">
+        <div class="location-container slide-up">
+            <h2 class="section-title">Getting There</h2>
+            <p class="venue-name">Vaibhav Lawn, Gopiganj</p>
+
+            <div class="map-container">
+                <iframe 
+                    src="https://www.google.com/maps?q=Vaibhav%20Lawn%20Gopiganj&output=embed"
+                    width="100%" height="300"
+                    style="border:0;"
+                    loading="lazy">
+                </iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>Made with love ❤️</p>
+    </footer>
+
+</div>
+
+<!-- SCRIPT -->
+<script src="script.js"></script>
+
+</body>
+</html>
