@@ -741,16 +741,22 @@ body {
 /* Mobile */
 @media (max-width: 768px) {
     .location-container {
-        margin-top: -30px;
+        margin-top: -10px;
+        gap: 6px;
+    }
+
+    .venue-name {
+        font-size: 1.2rem;
     }
 
     .map-container {
-        width: 85%;
+        width: 90%;
+        max-width: 300px;
     }
 }
 #location {
     align-items: flex-start;
-    padding-top: 300px;
+    padding-top: 80px;
 }
 /* --- petalection Styles --- */
 .golden-particle {
@@ -793,7 +799,53 @@ body {
     justify-content: flex-start;   /* move content upward */
     padding-top: 60px;             /* control how much up */
 }
-#location {
-    justify-content: flex-start;   /* move content upward */
-    padding-top: 60px;             /* control how much up */
+@media (max-width: 768px) {
+
+    #hero {
+        height: auto;
+        padding-top: 80px;
+        padding-bottom: 40px;
+    }
+
+    .rotating-frame {
+        width: 260px;
+        height: 260px;
+    }
+
+    .ganesh-img {
+        width: 110px;
+        height: 110px;
+    }
+
+    .ganesh-mantra {
+        font-size: 1.1rem;
+        padding: 0 10px;
+    }
+}
+@media (max-width: 768px) {
+
+    #hero {
+        height: auto;
+        padding-top: 80px;
+        padding-bottom: 40px;
+    }
+
+    .rotating-frame {
+        width: 260px;
+        height: 260px;
+    }
+
+    .ganesh-img {
+        width: 110px;
+        height: 110px;
+    }
+
+    .ganesh-mantra {
+        font-size: 1.1rem;
+        padding: 0 10px;
+    }
+}
+img {
+    max-width: 100%;
+    height: auto;
 }
