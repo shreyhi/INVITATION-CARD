@@ -1,12 +1,12 @@
 /* 
-   ===== WEDDING INVITATION STYLES - MOBILE OPTIMIZED =====
-   All original design preserved - only responsive refinements added
+   ===== WEDDING INVITATION STYLES - FULL SCREEN SECTIONS FIXED =====
+   Each section now fills 100vh - no next page peeking
 */
 
 /* Base & Variables */
 :root {
-    --primary-color: #0d3b45; /* Dark Teal */
-    --secondary-color: #05181c; /* Deeper Teal */
+    --primary-color: #0d3b45;
+    --secondary-color: #05181c;
     --gold: #D4AF37;
     --gold-light: #F9E596;
     --text-color: #fdfbf7;
@@ -27,6 +27,7 @@
 html {
     scroll-behavior: smooth;
     overflow-x: hidden;
+    scroll-snap-type: y mandatory;  /* Enables smooth page snapping */
 }
 
 body {
@@ -38,7 +39,7 @@ body {
     position: relative;
 }
 
-/* Background Frame overlay mimicking a royal texture */
+/* Background Frame overlay */
 .frame-overlay {
     position: fixed;
     top: 0;
@@ -77,7 +78,7 @@ body {
     z-index: -1;
 }
 
-/* Heart/Sparkle Particles */
+/* Particles */
 #particles-container {
     position: fixed;
     top: 0;
@@ -137,7 +138,7 @@ body {
     transition: 1s ease-in-out;
 }
 
-/* Typography styles */
+/* Typography */
 .couple-names {
     font-family: var(--font-heading);
     font-size: 5rem;
@@ -167,17 +168,11 @@ body {
     color: #dfdfdf;
 }
 
-/* Layout */
-.content-wrapper {
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100vw;
-}
-
+/* ============================================
+   SECTIONS - FULL SCREEN FIX (NO PEEKING)
+   ============================================ */
 .section {
-    min-height: 100vh;
+    height: 100vh;           /* FIXED: was min-height */
     width: 100vw;
     display: flex;
     justify-content: center;
@@ -185,6 +180,8 @@ body {
     padding: 4rem 1rem;
     text-align: center;
     position: relative;
+    overflow: hidden;        /* Prevents next section from peeking */
+    scroll-snap-align: start;
 }
 
 .section::before {
@@ -294,9 +291,111 @@ body {
     animation: spinIcon 3s linear infinite;
 }
 
+/* Hero Section - FULL SCREEN FIX */
+#hero {
+    height: 100vh;           /* FIXED: was 80vh */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.hero-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.rotating-frame {
+    position: relative;
+    width: 350px;
+    height: 350px;
+    margin-bottom: 20px;
+}
+
+.frame-img {
+    width: 100%;
+    height: 100%;
+    animation: rotateFrame 20s linear infinite;
+    filter: drop-shadow(0 0 10px gold);
+}
+
+.ganesh-img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    object-fit: cover;
+    border: 4px solid gold;
+    background: white;
+}
+
+@keyframes rotateFrame {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.hero-title {
+    font-family: 'Great Vibes', cursive;
+    font-size: 4rem;
+    color: gold;
+}
+
+.hero-subtitle {
+    font-size: 1.3rem;
+    color: white;
+}
+
+.ganesh-mantra {
+    margin-top: 20px;
+    font-size: 1.3rem;
+    color: #F9E596;
+    font-family: 'Noto Sans Devanagari', serif;
+    line-height: 1.8;
+    text-shadow: 0 0 10px rgba(212,175,55,0.5);
+}
+
+.rotating-frame::after {
+    content: "";
+    position: absolute;
+    width: 120%;
+    height: 120%;
+    border-radius: 50%;
+    top: -10%;
+    left: -10%;
+    box-shadow: 0 0 40px rgba(255,215,0,0.5);
+    animation: pulseGlow 3s infinite;
+    pointer-events: none;
+}
+
+@keyframes pulseGlow {
+    0% { box-shadow: 0 0 20px rgba(255,215,0,0.4); }
+    50% { box-shadow: 0 0 60px rgba(255,215,0,0.8); }
+    100% { box-shadow: 0 0 20px rgba(255,215,0,0.4); }
+}
+
 /* Welcome Section */
 #welcome .glass-card {
     width: 100%;
+}
+
+.welcome-image {
+    width: 220px;
+    border-radius: 50%;
+    margin-bottom: 20px;
+    border: 3px solid gold;
+    animation: floatImage 4s ease-in-out infinite;
+}
+
+@keyframes floatImage {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
 }
 
 .invite-text {
@@ -413,16 +512,18 @@ body {
     font-style: italic;
 }
 
-/* Location Section - optimized */
+/* Location Section - MOVED UPWARD */
 .location-container {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    gap: 8px;
+    gap: 4px;
     width: 85%;
     max-width: 900px;
-    margin-top: -50px;  /* Adjusted in mobile */
+    margin-top: -150px;
+    position: relative;
+    z-index: 2;
 }
 
 .location-text {
@@ -431,9 +532,9 @@ body {
 
 .venue-name {
     font-size: 1.6rem;
-    margin-top: 5px;
-    margin-bottom: 5px;
-    line-height: 1.3;
+    margin-top: 1px;
+    margin-bottom: 4px;
+    line-height: 1.2;
     font-family: var(--font-subheading);
 }
 
@@ -442,12 +543,13 @@ body {
     border-radius: 12px;
     overflow: hidden;
     border: 3px solid gold;
-    margin-top: 5px;
+    margin-top: 1px;
 }
 
 #location {
     justify-content: flex-start;
-    padding-top: 60px;
+    padding-top: 20px;
+    height: 100vh;
 }
 
 /* RSVP */
@@ -535,7 +637,7 @@ body {
     font-weight: bold;
 }
 
-/* Animations Trigger Classes */
+/* Animation Classes */
 .fade-in {
     opacity: 0;
     transform: scale(0.95);
@@ -551,107 +653,6 @@ body {
 .in-view {
     opacity: 1;
     transform: translateY(0) scale(1);
-}
-
-/* Hero Section */
-#hero {
-    height: 80vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-}
-
-.hero-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.rotating-frame {
-    position: relative;
-    width: 350px;
-    height: 350px;
-    margin-bottom: 20px;
-}
-
-.frame-img {
-    width: 100%;
-    height: 100%;
-    animation: rotateFrame 20s linear infinite;
-    filter: drop-shadow(0 0 10px gold);
-}
-
-.ganesh-img {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    object-fit: cover;
-    border: 4px solid gold;
-    background: white;
-}
-
-@keyframes rotateFrame {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
-}
-
-.hero-title {
-    font-family: 'Great Vibes', cursive;
-    font-size: 4rem;
-    color: gold;
-}
-
-.hero-subtitle {
-    font-size: 1.3rem;
-    color: white;
-}
-
-.ganesh-mantra {
-    margin-top: 20px;
-    font-size: 1.3rem;
-    color: #F9E596;
-    font-family: 'Noto Sans Devanagari', serif;
-    line-height: 1.8;
-    text-shadow: 0 0 10px rgba(212,175,55,0.5);
-}
-
-.rotating-frame::after {
-    content: "";
-    position: absolute;
-    width: 120%;
-    height: 120%;
-    border-radius: 50%;
-    top: -10%;
-    left: -10%;
-    box-shadow: 0 0 40px rgba(255,215,0,0.5);
-    animation: pulseGlow 3s infinite;
-    pointer-events: none;
-}
-
-@keyframes pulseGlow {
-    0% { box-shadow: 0 0 20px rgba(255,215,0,0.4); }
-    50% { box-shadow: 0 0 60px rgba(255,215,0,0.8); }
-    100% { box-shadow: 0 0 20px rgba(255,215,0,0.4); }
-}
-
-/* Welcome Image */
-.welcome-image {
-    width: 220px;
-    border-radius: 50%;
-    margin-bottom: 20px;
-    border: 3px solid gold;
-    animation: floatImage 4s ease-in-out infinite;
-}
-
-@keyframes floatImage {
-    0% { transform: translateY(0px); }
-    50% { transform: translateY(-10px); }
-    100% { transform: translateY(0px); }
 }
 
 /* Floating Objects */
@@ -681,7 +682,6 @@ body {
     font-size: 22px;
 }
 
-/* Golden Particles */
 .golden-particle {
     position: absolute;
     width: 6px;
@@ -705,10 +705,10 @@ img {
 }
 
 /* ============================================
-   ========== MOBILE RESPONSIVE FIXES ==========
+   MOBILE RESPONSIVE
    ============================================ */
 @media screen and (max-width: 768px) {
-    /* Frame overlay adjustments */
+    /* Frame overlay */
     .frame-overlay::before {
         top: 10px;
         left: 10px;
@@ -725,15 +725,17 @@ img {
                      calc(100vw - 45px) calc(100vh - 45px) 0 var(--gold);
     }
 
-    /* Glass card padding reduced */
+    /* Glass card */
     .glass-card {
         padding: 2rem 1.5rem;
         width: 95%;
+        max-height: 90vh;
+        overflow-y: auto;
     }
 
-    /* TYPOGRAPHY FIX - prevents text overflow */
+    /* Typography */
     .couple-names {
-        font-size: 2.8rem;  /* Was 5rem - now mobile friendly */
+        font-size: 2.8rem;
         margin: 1rem 0;
     }
 
@@ -741,7 +743,14 @@ img {
         font-size: 2.5rem;
     }
 
-    /* Navigation responsive */
+    /* Section - allow scroll on mobile if needed */
+    .section {
+        height: 100vh;
+        padding: 2rem 1rem;
+        overflow-y: auto;
+    }
+
+    /* Navigation */
     #navbar {
         top: 20px;
         right: 20px;
@@ -770,7 +779,7 @@ img {
         display: block;
     }
 
-    /* Music button smaller */
+    /* Music button */
     .music-btn {
         bottom: 20px;
         right: 20px;
@@ -779,21 +788,20 @@ img {
         font-size: 1rem;
     }
 
-    /* Hero section - CRITICAL FIX for rotating frame */
+    /* Hero section */
     #hero {
-        height: auto;
-        min-height: 90vh;
-        padding-top: 80px;
+        height: 100vh;
+        padding-top: 60px;
         padding-bottom: 40px;
     }
 
     .rotating-frame {
-        width: 260px;   /* Was 350px - now fits mobile */
+        width: 260px;
         height: 260px;
     }
 
     .ganesh-img {
-        width: 110px;   /* Was 150px - proportional */
+        width: 110px;
         height: 110px;
     }
 
@@ -811,12 +819,12 @@ img {
         margin-top: 15px;
     }
 
-    /* Welcome image fix */
+    /* Welcome image */
     .welcome-image {
         width: 160px;
     }
 
-    /* Countdown timer responsive */
+    /* Countdown */
     .countdown-timer {
         gap: 0.8rem;
     }
@@ -838,25 +846,69 @@ img {
         font-size: 2rem;
     }
 
-    /* Location section - FIXED negative margin issue */
+    /* ============================================
+       LOCATION SECTION - MOBILE SPACING FIX (ADDED)
+       Map moved up | Tighter text | No overlap
+       ============================================ */
+    
+    /* Location container - tighter spacing and moved upward */
     .location-container {
-        margin-top: -10px;   /* Was -50px - now safe */
-        width: 95%;
-        gap: 12px;
+        margin-top: -60px;        /* Pulls entire content up */
+        gap: 2px;                 /* Reduced gap between elements */
+        width: 90%;
+        padding: 0 10px;
     }
-
+    
+    /* "Baranwal Family Welcomes You" - reduce bottom space */
+    .location-container .subtitle {
+        margin-bottom: 8px;       /* Tighter spacing after subtitle */
+        font-size: 0.9rem;
+        letter-spacing: 2px;
+    }
+    
+    /* "Getting There" section title - compact */
+    .location-container .section-title {
+        font-size: 2rem;          /* Slightly smaller on mobile */
+        margin-bottom: 6px;       /* Reduced from default */
+        padding-bottom: 0;
+        border-bottom: none;
+    }
+    
+    /* Venue name - tighter spacing */
     .venue-name {
-        font-size: 1.3rem;
+        font-size: 1.2rem;
+        margin-top: 0;
+        margin-bottom: 4px;       /* Reduced space before map */
+        line-height: 1.3;
     }
-
+    
+    /* Map container - moved up, no extra margins */
     .map-container {
-        width: 100%;
-        max-width: 280px;
+        width: 85%;
+        max-width: 260px;
+        margin-top: 0;            /* Removed top margin */
+        margin-bottom: 0;
+        border-width: 2px;
     }
-
+    
+    /* Location section - ensure full screen containment */
     #location {
-        padding-top: 40px;
-        align-items: center;
+        justify-content: flex-start;
+        padding-top: 30px;        /* Adjusted for better vertical centering */
+        height: 100vh;
+        overflow: hidden;         /* Prevents overlap with next section */
+    }
+    
+    /* Ensure glass card doesn't overflow */
+    #location .glass-card {
+        padding: 1.5rem 1rem;
+        max-height: 95vh;
+        overflow-y: auto;         /* Allows scroll if content is too tall */
+    }
+    
+    /* Remove any extra spacing from the location text wrapper */
+    .location-text {
+        margin-bottom: 0;
     }
 
     /* Details grid */
@@ -883,7 +935,7 @@ img {
         padding: 1rem;
     }
 
-    /* RSVP form */
+    /* RSVP */
     .radio-group {
         gap: 1rem;
     }
@@ -896,13 +948,14 @@ img {
         padding: 0.8rem;
     }
 
-    /* Remove duplicate animation from earlier */
     .float-item {
         animation-duration: 10s;
     }
 }
 
-/* Small phones (up to 480px) */
+/* ============================================
+   EXTRA SMALL PHONES (up to 480px)
+   ============================================ */
 @media screen and (max-width: 480px) {
     .couple-names {
         font-size: 2.2rem;
@@ -936,16 +989,88 @@ img {
         font-size: 1.2rem;
     }
 
-    .venue-name {
-        font-size: 1.1rem;
-    }
-
     .hero-title {
         font-size: 2.2rem;
     }
+
+    /* Location section - extra small phones */
+    .location-container {
+        margin-top: -50px;
+        gap: 2px;
+        width: 95%;
+    }
+    
+    .location-container .section-title {
+        font-size: 1.8rem;
+        margin-bottom: 4px;
+    }
+    
+    .venue-name {
+        font-size: 1.1rem;
+        margin-bottom: 3px;
+    }
+    
+    .map-container {
+        width: 90%;
+        max-width: 220px;
+    }
+    
+    #location {
+        padding-top: 25px;
+    }
+    
+    #location .glass-card {
+        padding: 1.2rem 0.8rem;
+    }
 }
 
-/* Tablet landscape (optional fine tuning) */
+/* ============================================
+   TABLET SPECIFIC (between 481px and 768px)
+   ============================================ */
+@media screen and (min-width: 481px) and (max-width: 768px) {
+    .location-container {
+        margin-top: -70px;
+        gap: 4px;
+    }
+    
+    .location-container .section-title {
+        font-size: 2.2rem;
+        margin-bottom: 8px;
+    }
+    
+    .venue-name {
+        font-size: 1.3rem;
+        margin-bottom: 6px;
+    }
+    
+    .map-container {
+        max-width: 280px;
+    }
+}
+
+/* Very short screens */
+@media screen and (max-height: 600px) {
+    .section {
+        height: auto;
+        min-height: 100vh;
+    }
+    
+    .glass-card {
+        padding: 1rem;
+    }
+    
+    .rotating-frame {
+        width: 180px;
+        height: 180px;
+    }
+    
+    .ganesh-img {
+        width: 70px;
+        height: 70px;
+    }
+}
+
+/* Tablet landscape */
 @media screen and (min-width: 769px) and (max-width: 1024px) {
     .rotating-frame {
         width: 300px;
@@ -956,3 +1081,7 @@ img {
         font-size: 4rem;
     }
 }
+
+/* ============================================
+   DESKTOP PRESERVATION (no changes to original)
+   ============================================ */
