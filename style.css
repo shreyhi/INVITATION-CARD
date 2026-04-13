@@ -789,3 +789,11 @@ body {
     from { transform: translateY(0) rotate(0deg); }
     to { transform: translateY(110vh) rotate(360deg); }
 }
+#location {
+    justify-content: flex-start;   /* move content upward */
+    padding-top: 60px;             /* control how much up */
+}
+#location {
+    justify-content: flex-start;   /* move content upward */
+    padding-top: 60px;             /* control how much up */
+}
