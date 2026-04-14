@@ -73,7 +73,7 @@ setInterval(createParticle, 900);
 // ================= PRESENTATION =================
 const presentationFlow = [
     { section: '#hero', duration: 12090, audioId: 'audio-hero' },
-    { section: '#welcome', duration: 18500, audioId: 'audio-welcome' },
+    { section: '#welcome', duration: 14500, audioId: 'audio-welcome' },
     { section: '#invitation', duration: 25000, audioId: 'audio-invitation' },
     { section: '#location', duration: 25000, audioId: 'audio-location' }
 ];
